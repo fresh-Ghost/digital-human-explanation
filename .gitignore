@@ -48,3 +48,8 @@ skills-lock.json
 # Qoder specific
 .agents/
 .qoder/
+
+# Documentation and files folder
+files/
+AI数字人讲解*.md
+*.pdf
