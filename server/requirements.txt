@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+zhipuai
+langchain
+langchain-community
+langchain-core
+edge-tts
+pypdf
+chromadb
