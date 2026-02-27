@@ -23,7 +23,28 @@ Thumbs.db
 *.pdf
 *.mp3
 *.zip
+*.png
+
+# Server data directories
 server/tts_cache/
 server/uploads/
 server/chroma_db/
+server/chroma_db_*/
 server/knowledge_bases/
+server/temp_voice/
+
+# Test files
+test_*.py
+test_*.txt
+test_*.mp3
+diagnostic_*.py
+server/test_kb.py
+server/API_MIGRATION.md
+server.zip
+
+# Project management files
+skills-lock.json
+
+# Qoder specific
+.agents/
+.qoder/
