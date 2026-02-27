@@ -1,0 +1,29 @@
+# Dependencies
+frontend/node_modules/
+server/venv/
+__pycache__/
+*.pyc
+
+# Build files
+frontend/dist/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large files (optional - remove if you want to include them)
+*.pdf
+*.mp3
+*.zip
+server/tts_cache/
+server/uploads/
+server/chroma_db/
+server/knowledge_bases/
