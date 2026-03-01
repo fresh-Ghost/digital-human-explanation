@@ -36,6 +36,10 @@ app.include_router(tts.router, prefix="/api/v1/tts", tags=["TTS"])
 app.include_router(audit.router, prefix="/api/v1/audit", tags=["Audit"])
 app.include_router(runtime.router, tags=["Runtime"])  # WebSocket 路由，不需要 prefix
 
+@app.get("/")
+async def root():
+    return {"status": "ok", "message": "Lingjing-Lite MVP running (Modularized)"}
+
 @app.get("/health")
 async def health():
     return {"status": "ok", "message": "Lingjing-Lite MVP running (Modularized)"}
