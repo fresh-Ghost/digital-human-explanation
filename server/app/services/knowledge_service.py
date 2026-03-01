@@ -9,10 +9,17 @@ from app.services.ai_service import embeddings
 
 class KnowledgeService:
     def __init__(self):
-        self.vectorstore: Optional[Chroma] = None
+        self._vectorstore: Optional[Chroma] = None
         self.current_kb_id: str = "default"
         self.current_kb_name: str = "默认知识库"
-        self.init_vectorstore()
+        # 延迟初始化，不在构造函数中创建
+
+    @property
+    def vectorstore(self) -> Optional[Chroma]:
+        """延迟初始化向量库"""
+        if self._vectorstore is None:
+            self.init_vectorstore()
+        return self._vectorstore
 
     def init_vectorstore(self):
         """初始化向量库"""
@@ -20,8 +27,11 @@ class KnowledgeService:
             kb_path = self.get_kb_path(self.current_kb_id)
             if not kb_path:
                 kb_path = CHROMA_DIR
+            
+            # 确保目录存在
+            os.makedirs(kb_path, exist_ok=True)
                 
-            self.vectorstore = Chroma(
+            self._vectorstore = Chroma(
                 collection_name="lingjing_knowledge_zhipu",
                 embedding_function=embeddings,
                 persist_directory=kb_path
@@ -29,7 +39,9 @@ class KnowledgeService:
             print(f"向量库初始化成功: {self.current_kb_id} -> {kb_path}")
         except Exception as e:
             print(f"警告：向量库初始化失败: {e}")
-            self.vectorstore = None
+            import traceback
+            traceback.print_exc()
+            self._vectorstore = None
 
     def load_vectorstore(self, kb_id: str) -> Optional[Chroma]:
         """按需加载向量库"""
