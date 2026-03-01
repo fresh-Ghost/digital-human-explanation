@@ -1,10 +1,12 @@
 fastapi
 uvicorn
-pydantic
-zhipuai
+pydantic<2.10.0
+zhipuai==1.0.7
 langchain
 langchain-community
 langchain-core
 edge-tts
 pypdf
 chromadb
+python-multipart
+httpx<0.28.0
