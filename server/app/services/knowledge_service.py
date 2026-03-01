@@ -3,7 +3,10 @@ import gc
 import time
 import shutil
 from typing import Optional, List
-from langchain_community.vectorstores import Chroma
+try:
+    from langchain_chroma import Chroma
+except ImportError:
+    from langchain_community.vectorstores import Chroma
 from app.core.config import CHROMA_DIR, KB_BASE_DIR
 from app.services.ai_service import embeddings
 
